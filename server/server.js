@@ -42,7 +42,7 @@ dataBase.connect();
 App.use("/api/v1/course", courseRoute);
 App.use("/api/v1/payments", paymentRoute);
 App.use("/api/v1/profile", profileRoute);
-App.use("/api/v1/user", userRoute);
+App.use("/api/v1/auth", userRoute);
 
 // Applisten
 App.listen(PORT, () => {

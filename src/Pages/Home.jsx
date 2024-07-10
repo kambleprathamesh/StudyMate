@@ -46,7 +46,7 @@ function Home() {
         </div>
 
         {/* video */}
-        <div className="w-[65%]  mx-3 my-14 shadow shadow-blue-200">
+        <div className="w-[65%]  mx-3 my-14   shadow-2xl shadow-blue-100 box_shadow">
           <video muted loop autoPlay>
             <source src={HomeVideo} type="video/mp4" />
           </video>

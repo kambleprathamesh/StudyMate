@@ -9,3 +9,6 @@ html,body{
 .bgHome{
     background-image: url(../src/assets//Images/bghome.svg);
 }
+.box_shadow{
+    box-shadow: 15px 15px 0px white;
+}

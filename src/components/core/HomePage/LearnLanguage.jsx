@@ -26,7 +26,7 @@ function LearnLanguageSection() {
           <img src={plan} alt="plan" className="object-contain -ml-32" />
         </div>
         <div className="w-fit ">
-          <CTAButton active={true}>Learn More</CTAButton>
+          <CTAButton active={true} linkTo={"/signUp"}>Learn More</CTAButton>
         </div>
       </div>
     </div>

@@ -37,7 +37,7 @@ router.post("/verifyEmail", sendOTP);
 router.post("/changePassword", auth, changePassword);
 
 // reset Passwords
-router.post("/reset-Passsword-token", resetPasswordToken);
-router.post("/reset-Passsword", resetPassword);
+router.post("/reset-Password-token", resetPasswordToken);
+router.post("/reset-Password", resetPassword);
 
 module.exports = router;

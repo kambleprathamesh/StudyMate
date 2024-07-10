@@ -42,7 +42,7 @@ exports.resetPasswordToken = async (req, res) => {
     );
 
     // retrun response
-    return res.status(400).json({
+    return res.status(200).json({
       success: true,
       message:
         "Passowrd Link sent Succesfully,please check Mail and change Password",
@@ -51,7 +51,7 @@ exports.resetPasswordToken = async (req, res) => {
     console.log("Error occured at sending password link ", error);
     return res.status(500).json({
       success: false,
-      message: "Something Went Wrong while sending Rest Pasword Link ",
+      message: "Something Went Wrong while sending Reset Pasword Link ",
     });
   }
 };

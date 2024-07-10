@@ -7,40 +7,15 @@ const otpSchema = new mongoose.Schema({
     required: true,
   },
   otp: {
-    type: Number,
+    type: String,
     required: true,
   },
-  timeStamp: {
+  createdAt: {
     type: Date,
     default: Date.now(),
     expires: 5 * 60,
   },
 });
-
-// const createMail = async (email, title, body) => {
-//   try {
-//     // create Transporter
-//     let transporter = nodemailer.createTransport({
-//       host: process.env.MAIL_HOST,
-//       auth: {
-//         user: process.env.MAIL_USER,
-//         pass: process.env.MAIL_PASS,
-//       },
-//     });
-
-//     // send mail
-//     let info = await transporter.sendMail({
-//       from: `StudyNotion`,
-//       to: `${email}`,
-//       subject: `${title}`,
-//       html: `<h1>${body}</h1>`,
-//     });
-
-//     console.log(info);
-//   } catch (error) {
-//     console.log(error.message);
-//   }
-// };
 
 // async fun  code to send mail
 async function emailVerification(email, otp) {
@@ -52,7 +27,7 @@ async function emailVerification(email, otp) {
       "EmailVerification",
       otpTemplate(otp)
     );
-    console.log("Mail Response: ",mailResponse)
+    console.log("Mail Response: ", mailResponse);
     console.log("email send Succesfully", mailResponse);
   } catch (error) {
     console.log("error ocured while Sending Mail", error);

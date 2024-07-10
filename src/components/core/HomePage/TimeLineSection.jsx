@@ -50,7 +50,7 @@ function TimeLineSection() {
         </div>
 
         {/* right section */}
-        <div className="w-[70%]  relative shadow-2xl shadow-blue-100  rounded-md">
+        <div className="w-[70%]  relative  shadow-2xl shadow-blue-100  rounded-md">
           <video muted autoPlay loop className="rounded-md">
             <source src={timelineVideo} type="video/mp4" />
           </video>
