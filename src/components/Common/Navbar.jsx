@@ -1,4 +1,4 @@
-import { useState, useEffect } from "react";
+// import { useState, useEffect } from "react";
 import { Link, matchPath } from "react-router-dom";
 import logo from "../../assets/Logo/Logo.svg";
 import { useLocation } from "react-router-dom";
@@ -64,7 +64,7 @@ function Navbar() {
                         <div className="invisible absolute right-[35%] -top-2 bg-richblack-5 h-6 w-6 rotate-45  group-hover:visible"></div>
                         {subLinks.length ? (
                           subLinks.map((subLink, index) => (
-                            <Link to={`${subLink.link}`}>
+                            <Link key={index} to={`${subLink.link}`}>
                               <p>{subLink.title}</p>
                             </Link>
                           ))

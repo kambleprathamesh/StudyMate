@@ -50,7 +50,8 @@ const VerifyEmail = () => {
                 renderInput={(props) => (
                   <input
                     {...props}
-                    className="w-[48px] h-16 p-6 lg:w-[60px] border-0 bg-richblack-800 rounded-[0.5rem] text-richblack-5 aspect-square text-center focus:border-0 focus:outline-2 focus:outline-yellow-50"
+                    className="w-[44px] h-12 text-xl lg:w-52 border-0 bg-richblack-800 rounded-[0.5rem] text-white aspect-square text-center focus:border-0 focus:outline-2 focus:outline-yellow-50"
+                    //  className="w-[48px] lg:w-[60px] border-0 bg-richblack-800 rounded-[0.5rem] text-richblack-5 aspect-square text-center focus:border-0 focus:outline-2 focus:outline-yellow-50"
                   />
                 )}
                 containerStyle={{

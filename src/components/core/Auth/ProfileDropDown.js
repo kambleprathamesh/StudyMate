@@ -1,5 +1,7 @@
 function ProfileDropDown() {
-    return <div></div>;
+    return <div className="text-white">
+        HELLOOO THISIS IS A PROFILE DROPDOWN
+    </div>;
   }
   
   export default ProfileDropDown;

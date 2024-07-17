@@ -9,6 +9,7 @@ import LearnLanguageSection from "../components/core/HomePage/LearnLanguage";
 import InstructorSection from "../components/core/HomePage/InstructorSection";
 import ReviewSection from "../components/core/HomePage/ReviewSection";
 import ExploreMore from "../components/core/HomePage/ExploreMore";
+import Footer from "../components/Common/Footer";
 function Home() {
   return (
     <div>
@@ -160,6 +161,7 @@ function Home() {
         <ReviewSection />
       </div>
       {/* section 4-->footer */}
+      <Footer />
     </div>
   );
 }

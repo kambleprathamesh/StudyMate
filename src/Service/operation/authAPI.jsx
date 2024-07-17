@@ -116,16 +116,21 @@ export function login(email, password, navigate) {
         throw new Error(response.data.message);
       }
       console.log("response.data.success ", response.data.success);
-
+      console.log(
+        "response.data.user.firstname ",
+        response.data.checkUser.firstName
+      );
+      console.log("response.data.token ", response.data.token);
       toast.success("Login Successful");
       dispatch(setToken(response.data.token));
-      const userimg = response.data?.user?.image
-        ? response.data.user.image
-        : `https://api.dicebear.com/5.x/initials/svg?seed=${response.data.user.firstName}_${response.data.user.lastName}`;
-      dispatch(setUser({ ...response.data.user, image: userimg }));
+
+      const userimg = response.data?.checkUser?.image
+        ? response.data.checkUser.image
+        : `https://api.dicebear.com/5.x/initials/svg?seed=${response.data.checkUser.firstName}_${response.data.checkUser.lastName}`;
+      dispatch(setUser({ ...response.data.checkUser, image: userimg }));
 
       localStorage.setItem("token", JSON.stringify(response.data.token));
-      localStorage.setItem("user", JSON.stringify(response.data.user));
+      localStorage.setItem("user", JSON.stringify(response.data.checkUser));
       navigate("/dashboard/my-profile");
     } catch (error) {
       console.log("LOGIN API ERROR............", error);
@@ -133,6 +138,18 @@ export function login(email, password, navigate) {
     }
     dispatch(setLoading(false));
     toast.dismiss(toastId);
+  };
+}
+
+export function logout(navigate) {
+  return async (dispatch) => {
+    dispatch(setToken(null));
+    dispatch(setUser(null));
+    // dispatch(resetCart(null));
+    localStorage.removeItem("token");
+    localStorage.removeItem("user");
+    toast.success("Logout Succesfully");
+    navigate("/");
   };
 }
 // reset password token

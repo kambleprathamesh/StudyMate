@@ -8,8 +8,10 @@ import Error from "./Pages/Error";
 import ForgotPassword from "./Pages/ForgotPassword";
 import UpdatePassword from "./Pages/UpdatePassword";
 import VerifyEmail from "./Pages/VerifyEmail";
-import About from "./Pages/About"
-import MyProfile from "./Pages/MyProfile";
+import About from "./Pages/About";
+// import MyProfile from "./Pages/MyProfile";
+import Dashboard from "./Pages/Dashboard";
+import MyProfile from "./components/core/Dashboard/MyProfile";
 function App() {
   return (
     <div className="w-screen min-h-screen flex flex-col bg-richblack-900 font-inter">
@@ -22,7 +24,11 @@ function App() {
         <Route path="update-password/:id" element={<UpdatePassword />} />
         <Route path="verify-email" element={<VerifyEmail />} />
         <Route path="About" element={<About />} />
-        <Route path="dashboard/my-profile" element={<MyProfile />} />
+        <Route element={<Dashboard />}>
+          {" "}
+          <Route path="dashboard/my-profile" element={<MyProfile />} />
+        </Route>
+
         <Route path="*" element={<Error />} />
       </Routes>
     </div>
