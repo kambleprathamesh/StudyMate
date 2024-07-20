@@ -27,6 +27,7 @@ function App() {
         <Route element={<Dashboard />}>
           {" "}
           <Route path="dashboard/my-profile" element={<MyProfile />} />
+          <Route path="dashboard/settings" element={<MyProfile />} />
         </Route>
 
         <Route path="*" element={<Error />} />
