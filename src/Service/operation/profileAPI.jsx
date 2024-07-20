@@ -1,9 +1,9 @@
 import { setLoading, setUser } from "../../Slice/profileSlice";
-import { toast } from "react-toastify";
+import { toast } from "react-hot-toast";
 import { apiConnector } from "../apiConnector";
 import { logout } from "./authAPI";
 import { profileEndpoints } from "../api";
-import { getEnrolledCourses } from "../../../server/controllers/profile";
+// import { getEnrolledCourses } from "../../../server/controllers/profile";
 
 const { GET_USER_DETAILS_API, GET_ENROLLED_COURSES_API } = profileEndpoints;
 
@@ -13,7 +13,7 @@ export function getUserDetails(token, navigate) {
     const toastId = toast.loading("Loading..");
     try {
       const response = await apiConnector("GET", GET_USER_DETAILS_API, null, {
-        Authorization: `Bearer${token}`,
+        Authorisation: `Bearer${token}`,
       });
 
       console.log("GET USER DETAILS API RESPONSE....", response);
@@ -27,7 +27,7 @@ export function getUserDetails(token, navigate) {
     } catch (error) {
       dispatch(logout(navigate));
       console.log("ERROR WHILE FETCHING USER ADDITIONAL DETAILS....", error);
-      toast.error("Could Not Get User Details");
+      toast.error("Could Not Get User Details..");
     }
     toast.dismiss(toastId);
     dispatch(setLoading(false));
@@ -35,7 +35,7 @@ export function getUserDetails(token, navigate) {
 }
 
 export function getEnrolledCourses(token) {
-  return async (dispatch) => {
+  return async () => {
     const toastId = toast.loading("Loading...");
     let result = [];
     try {
@@ -45,14 +45,17 @@ export function getEnrolledCourses(token) {
         GET_ENROLLED_COURSES_API,
         null,
         {
-          Authorization: `bearer${token}`,
+          Authorisation: `bearer${token}`,
         }
       );
+
       console.log("AFTER Calling BACKEND API FOR ENROLLED COURSES");
-      if (!response.data.succes) {
+      console.log("response.data.succes", response.data.succes);
+      if (!response.data.success) {
         throw new Error(response.data.message);
       }
       result = response.data.data;
+      console.log("result:", result);
     } catch (error) {
       console.log("ERROR WHILE FETCHING USER ENROLLED COURSES....", error);
       toast.error("Could Not Get User Enrolled Courses");

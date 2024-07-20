@@ -198,7 +198,7 @@ exports.deleteAccount = async (req, res) => {
     //   _id: userDetails.courses.studentsEnrolled,
     // });
     // delete userID
-    await user.findByIdAndDelete({_id:userId});
+    await user.findByIdAndDelete({ _id: userId });
 
     // return res
     return res.status(200).json({
@@ -206,7 +206,7 @@ exports.deleteAccount = async (req, res) => {
       message: "Account Deleted Suucesfully",
     });
   } catch (error) {
-    console.log("Error Occured while deleting Profile: ",error)
+    console.log("Error Occured while deleting Profile: ", error);
     return res.status(404).json({
       success: false,
       message: "Internal Server Issue",
@@ -320,6 +320,7 @@ exports.getEnrolledCourses = async (req, res) => {
       data: userDetails.courses,
     });
   } catch (error) {
+    console.log("Error in Getting Enroled Courses ", error);
     return res.status(400).json({
       success: false,
       message: `internal server Issue`,

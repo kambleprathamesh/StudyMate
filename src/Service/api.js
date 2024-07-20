@@ -22,5 +22,5 @@ export const contactusEndpoint = {
 // profile Endpoints
 export const profileEndpoints = {
   GET_USER_DETAILS_API: BASE_URL + "/profile/getUserDetails",
-  GET_ENROLLED_COURSES_API: BASE_URL + "/profile//getEnrolledCourses",
+  GET_ENROLLED_COURSES_API: BASE_URL + "/profile/getEnrolledCourses",
 };

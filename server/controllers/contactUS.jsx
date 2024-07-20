@@ -11,7 +11,7 @@ exports.ContactUS = async (req, res) => {
       ContactUS(firstName, lastName, email, message, phoneNo, countryCode)
     );
 
-    console.log("Email Res ", emailRes)
+    console.log("Email Res ", emailRes);
     return res.json({
       success: true,
       message: "Email send successfully",
@@ -21,7 +21,7 @@ exports.ContactUS = async (req, res) => {
     console.log("Error message :", error.message);
     return res.json({
       success: false,
-      message: "Something went wrong...",
+      message: "Contact Something went wrong...",
     });
   }
 };

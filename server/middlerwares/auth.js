@@ -10,7 +10,7 @@ exports.auth = async (req, res, next) => {
     const token =
       req.cookies.token ||
       req.body.token ||
-      req.header("Authorisation").replace("Bearer ", "");
+      req.header("Authorisation").replace("bearer","");
 
     console.log(token);
     // if token missing,return response
@@ -38,7 +38,7 @@ exports.auth = async (req, res, next) => {
     console.log("Erro ocuured while authentication ", error);
     return res.status(400).json({
       success: false,
-      message: "Something went wrong",
+      message: "Authentication mein Something went wrong",
     });
   }
 };
