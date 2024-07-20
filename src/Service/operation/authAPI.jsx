@@ -37,7 +37,7 @@
 import { setLoading, setToken } from "../../Slice/authSlice";
 import { apiConnector } from "../apiConnector";
 import { toast } from "react-hot-toast";
-import { endpoints } from "../api";
+import { AuthEndpoints } from "../api";
 import { setUser } from "../../Slice/profileSlice";
 const {
   SENDOTP_API,
@@ -45,7 +45,7 @@ const {
   SIGNUP_API,
   RESETPASSTOKEN_API,
   RESETPASSWORD_API,
-} = endpoints;
+} = AuthEndpoints;
 
 // sendotp
 export function sendOtp(email, navigate) {
