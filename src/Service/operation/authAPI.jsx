@@ -1,38 +1,3 @@
-// import { setLoading, setToken } from "../../Slice/authSlice";
-// import { apiConnector } from "../apiConnector";
-// import { toast } from "react-hot-toast";
-// import { endpoints } from "../api";
-// const {
-//   SENDOTP_API,
-//   SIGNUP_API,
-//   LOGIN_API,
-//   RESETPASSTOKEN_API,
-//   RESETPASSWORD_API,
-// } = endpoints;
-
-// export function getResetPasswordtoken(email, setEmailSent) {
-//   return async (dispatch) => {
-//     dispatch(setLoading(true));
-//     try {
-//       const response = await apiConnector("POST", RESETPASSTOKEN_API, {
-//         email,
-//       });
-//       console.log("response.data.success ", response.data.success);
-//       console.log("Resset Password Toekn response ", response);
-//       if (!response.data.success) {
-//         throw new Error(response.data.message);
-//       }
-
-//       toast.success("Email Sent Succesfully");
-//       setEmailSent(true);
-//     } catch (error) {
-//       console.log("Error occured while sending mail", error);
-//       toast.error("Failed to send email");
-//     }
-//     dispatch(setLoading(false));
-//   };
-// }
-
 // require("dotenv").config()
 import { setLoading, setToken } from "../../Slice/authSlice";
 import { apiConnector } from "../apiConnector";
@@ -142,6 +107,7 @@ export function login(email, password, navigate) {
 }
 
 export function logout(navigate) {
+  console.log("Function is reaching heree");
   return async (dispatch) => {
     dispatch(setToken(null));
     dispatch(setUser(null));

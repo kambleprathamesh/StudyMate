@@ -10,7 +10,7 @@ exports.createCategory = async (req, res) => {
     if (!name || !description) {
       return res.status(400).json({
         success: false,
-        message: "please fill all the details",
+        message: "Please fill all the details",
       });
     }
 

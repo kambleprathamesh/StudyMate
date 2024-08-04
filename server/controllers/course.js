@@ -13,13 +13,13 @@ exports.createCourse = async (req, res) => {
       whatYouWillLearn,
       price,
       category,
-      tag,
+      // tag,
       status,
       instructions,
     } = req.body;
 
     // fetch thumbnail
-    const thumbNail = req.files.thumbNailImg;
+    // const thumbNail = req.files.thumbNailImg;z
 
     // validation
     if (
@@ -27,12 +27,14 @@ exports.createCourse = async (req, res) => {
       !courseDesc ||
       !whatYouWillLearn ||
       !price ||
-      !tag ||
-      !thumbNail ||
       !category
+      // !tag ||
+      // !thumbNail ||
     ) {
+      console.log("category", category);
       return res.status(400).json({
         success: false,
+
         message: "All fields are required",
       });
     }
@@ -46,7 +48,7 @@ exports.createCourse = async (req, res) => {
     const instructorDetails = await user.findById(userId, {
       accountType: "Instructor",
     });
-    console.log("instructorDetails: ",instructorDetails);
+    console.log("instructorDetails: ", instructorDetails);
     if (!instructorDetails) {
       return res.status(200).json({
         success: false,
@@ -63,14 +65,14 @@ exports.createCourse = async (req, res) => {
       });
     }
 
-    console.log("categoryDetails: ",categoryDetails);
+    console.log("categoryDetails: ", categoryDetails);
 
     // upload image to cloudinary
-    const thumbNailImg = await cloudinaryUploader(
-      thumbNail,
-      process.env.FOLDER_NAME
-    );
-    console.log("Thumb Nail: ",thumbNail);
+    // const thumbNailImg = await cloudinaryUploader(
+    //   thumbNail,
+    //   process.env.FOLDER_NAME
+    // );
+    // console.log("Thumb Nail: ",thumbNail);
 
     // create entry for new course
     const newCourse = await course.create({
@@ -79,13 +81,13 @@ exports.createCourse = async (req, res) => {
       category: categoryDetails.id,
       instructor: instructorDetails._id,
       price: price,
-      tag: tag,
-      thumbNail: thumbNailImg.secure_url,
+      // tag: tag,
+      // thumbNail: thumbNailImg.secure_url,
       status: status,
       whatYouWillLearn: whatYouWillLearn,
       instructions: instructions,
     });
-    console.log("newCourse Details: ",newCourse);
+    console.log("newCourse Details: ", newCourse);
 
     // update by pushing instructor course list
     await user.findByIdAndUpdate(
@@ -114,10 +116,10 @@ exports.createCourse = async (req, res) => {
     return res.status(200).json({
       success: true,
       message: "New Course created Succesfully",
-      courseData:newCourse
+      courseData: newCourse,
     });
   } catch (error) {
-    console.log("Error while creating course ",error)
+    console.log("Error while creating course ", error);
     return res.status(400).json({
       success: false,
       message: "Failed To create new Course",
@@ -163,7 +165,7 @@ exports.getCourseDetails = async (req, res) => {
     // get course detail using course id
     const { courseId } = req.body;
     const courseDetails = await course
-      .find({_id:courseId})
+      .find({ _id: courseId })
       .populate({
         path: "instructor",
         populate: {
@@ -193,7 +195,7 @@ exports.getCourseDetails = async (req, res) => {
       Data: courseDetails,
     });
   } catch (error) {
-    console.log("Error occured at while fetching courseDetails ",error);
+    console.log("Error occured at while fetching courseDetails ", error);
     return res.status(400).json({
       success: false,
       message: error.message,

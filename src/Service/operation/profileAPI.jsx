@@ -1,7 +1,7 @@
 import { setLoading, setUser } from "../../Slice/profileSlice";
 import { toast } from "react-hot-toast";
 import { apiConnector } from "../apiConnector";
-import { logout } from "./authAPI";
+import {logout}  from "./authAPI";
 import { profileEndpoints } from "../api";
 // import { getEnrolledCourses } from "../../../server/controllers/profile";
 

@@ -12,3 +12,7 @@ html,body{
 .box_shadow{
     box-shadow: 15px 15px 0px white;
 }
+
+select option:disabled {
+    color: #6B7280; /* Replace with your color */
+  }

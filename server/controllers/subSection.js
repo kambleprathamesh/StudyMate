@@ -1,6 +1,6 @@
 const subSection = require("../model/subSection");
 const section = require("../model/section");
-const {cloudinaryUploader} = require("../utils/imageUploader");
+const { cloudinaryUploader } = require("../utils/imageUploader");
 require("dotenv").config();
 // create subsection
 exports.createSubSection = async (req, res) => {
@@ -25,7 +25,10 @@ exports.createSubSection = async (req, res) => {
     }
     // upload video to cloudinary...fetch the secure url
 
-    const cloudinaryVideo = await cloudinaryUploader(video, process.env.Folder_Name);
+    const cloudinaryVideo = await cloudinaryUploader(
+      video,
+      process.env.Folder_Name
+    );
     // create in DB
     const newSubSection = await subSection.create({
       title: title,
@@ -50,7 +53,7 @@ exports.createSubSection = async (req, res) => {
     return res.status(200).json({
       success: true,
       message: "subSection created Successfully",
-      data:newSubSection
+      data: newSubSection,
     });
   } catch (error) {
     console.log("Error while Creating Subsection ", error);
@@ -104,6 +107,7 @@ exports.updateSubSection = async (req, res) => {
     return res.status(200).json({
       success: true,
       message: "subSection updated Successfully",
+      data: updatedSubsectionDetails,
     });
   } catch (error) {
     return res.status(404).json({

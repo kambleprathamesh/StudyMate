@@ -209,7 +209,7 @@ const Footer = () => {
           </div>
         </div>
         <div className="w-[80vw] h-[0.5px] bg-richblack-400"></div>
-        <div className="w-[80vw] flex flex-col items-center md:flex-row md:justify-between md:items-center pt-7 pb-20">
+        <div className="w-[80vw] flex flex-col items-center md:flex-row md:justify-between md:items-center pt-7 pb-6">
           <div className="flex   flex-row justify-evenly items-center gap-2">
             <p className="text-base text-richblack-300 font-inter font-medium">
               Privacy Policy

@@ -14,9 +14,10 @@ import Dashboard from "./Pages/Dashboard";
 import MyProfile from "./components/core/Dashboard/MyProfile";
 import { EnrolledCourses } from "./components/core/Dashboard/EnrolledCourses";
 import { Cart } from "./components/core/Dashboard/Cart/index";
+import { AddCourse } from "./components/core/Dashboard/Courses";
 function App() {
   return (
-    <div className="w-screen min-h-screen flex flex-col bg-richblack-900 font-inter">
+    <div className="w-screen min-h-screen flex flex-col bg-richblack-900 font-inter ">
       <Navbar />
       <Routes>
         <Route path="/" element={<Home />} />
@@ -35,6 +36,7 @@ function App() {
             element={<EnrolledCourses />}
           />
           <Route path="dashboard/cart" element={<Cart />} />
+          <Route path="dashboard/add-course" element={<AddCourse />} />
         </Route>
 
         <Route path="*" element={<Error />} />
