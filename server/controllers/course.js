@@ -19,7 +19,7 @@ exports.createCourse = async (req, res) => {
     } = req.body;
 
     // fetch thumbnail
-    // const thumbNail = req.files.thumbNailImg;z
+    const thumbNail = req.files.thumbNail;
 
     // validation
     if (
@@ -27,9 +27,10 @@ exports.createCourse = async (req, res) => {
       !courseDesc ||
       !whatYouWillLearn ||
       !price ||
-      !category
-      // !tag ||
-      // !thumbNail ||
+      !category ||
+      !thumbNail
+
+      //|| !tag ||
     ) {
       console.log("category", category);
       return res.status(400).json({
@@ -68,11 +69,14 @@ exports.createCourse = async (req, res) => {
     console.log("categoryDetails: ", categoryDetails);
 
     // upload image to cloudinary
-    // const thumbNailImg = await cloudinaryUploader(
-    //   thumbNail,
-    //   process.env.FOLDER_NAME
-    // );
-    // console.log("Thumb Nail: ",thumbNail);
+    const thumbNailImg = await cloudinaryUploader(
+      thumbNail,
+      process.env.FOLDER_NAME
+    );
+    if (!thumbNailImg) {
+      return toast.error("Thumbnail not found");
+    }
+    console.log("Thumb Nail: ", thumbNail);
 
     // create entry for new course
     const newCourse = await course.create({
@@ -82,7 +86,7 @@ exports.createCourse = async (req, res) => {
       instructor: instructorDetails._id,
       price: price,
       // tag: tag,
-      // thumbNail: thumbNailImg.secure_url,
+      thumbNail: thumbNailImg.secure_url,
       status: status,
       whatYouWillLearn: whatYouWillLearn,
       instructions: instructions,

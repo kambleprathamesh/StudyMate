@@ -43,7 +43,7 @@ export const CourseInformation = () => {
       setValue("courseBenifits", course.whatYouWillLearn);
       setValue("courseCategory", course.category);
       setValue("courseRequirements", course.instructions);
-      // setValue("courseImage", course.thumbNail);
+      setValue("courseImage", course.thumbNail);
     }
     getCategories();
   }, []);
@@ -58,8 +58,8 @@ export const CourseInformation = () => {
       currentValues.courseBenifits !== course.whatYouWillLearn ||
       currentValues.courseCategory !== course.category ||
       currentValues.courseRequirements.toString() !==
-        course.instructions.toString()
-      // || currentValues.courseImage !== course.thumbNail
+        course.instructions.toString() ||
+      currentValues.courseImage !== course.thumbNail
     )
       return true;
     else return false;
@@ -100,9 +100,9 @@ export const CourseInformation = () => {
             JSON.stringify(data.courseRequirements)
           );
         }
-        // if (currentValues.courseImage !== course.thumbNail) {
-        //   formData.append("thumbNail", data.courseImage);
-        // }
+        if (currentValues.courseImage !== course.thumbNail) {
+          formData.append("thumbNail", data.courseImage);
+        }
         setLoading(true);
         const response = await updateCourseDetails(formData, token);
         setLoading(false);
@@ -126,6 +126,7 @@ export const CourseInformation = () => {
     formData.append("category", data.courseCategory);
     formData.append("instructions", JSON.stringify(data.courseRequirements));
     // formData.append("thumbNail", data.courseImage);
+    formData.append("thumbNail", data.courseImage[0]);
     formData.append("status", COURSE_STATUS.DRAFT);
 
     setLoading(true);
@@ -251,6 +252,7 @@ export const CourseInformation = () => {
             type="file"
             id="courseImage"
             className="w-full h-[200px] bg-richblack-700 rounded-md border-[1px] border-dashed border-richblack-400 "
+            {...register("courseImage", { required: true })}
           />
         </div>
 
