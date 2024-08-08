@@ -107,7 +107,7 @@ export const CourseInformation = () => {
         const response = await updateCourseDetails(formData, token);
         setLoading(false);
         if (response) {
-          setStep(2);
+          dispatch(setStep(2));
           dispatch(setCourse(response));
         }
       } else {
@@ -133,7 +133,7 @@ export const CourseInformation = () => {
     const result = await createCourse(formData, token);
 
     if (result) {
-      setStep(2);
+      dispatch(setStep(2));
       dispatch(setCourse(result));
     }
     setLoading(false);

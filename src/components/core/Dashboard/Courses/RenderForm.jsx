@@ -55,7 +55,7 @@ export const RenderForm = () => {
       </div>
       {step === 1 && <CourseInformation />}
       {step === 2 && <CourseBuilder />}
-      {step === 3 && <CoursePublish />}
+      {/* {step === 3 && <CoursePublish />} */}
     </div>
   );
 };
