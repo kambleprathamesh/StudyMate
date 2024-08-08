@@ -1,6 +1,6 @@
 import React from "react";
 import { useForm } from "react-hook-form";
-
+import { setCourse,setEditCourse,setStep } from "../../../../../Slice/courseSlice";
 export const CourseBuilder = () => {
   const {
     register,
