@@ -19,8 +19,8 @@ exports.createCourse = async (req, res) => {
     } = req.body;
 
     // fetch thumbnail
-    const thumbNail = req.files.thumbNail;
-
+    // const thumbNail = req.files;
+    const thumbNail = req.files ? req.files.thumbNail : null;
     // validation
     if (
       !courseName ||
